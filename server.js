@@ -6,11 +6,11 @@ const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const musicRoute = require("./routes/music");
  
-// dotenv.config();
+dotenv.config();
 
-const dbConfig = require("./config/db.config");
+
 mongoose
-    .connect(dbConfig.url)
+    .connect(process.env.MONGO_URL)
     .then(()=>console.log("Database connected!"))
     .catch((err) =>{
         console.log(err);
