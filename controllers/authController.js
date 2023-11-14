@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJpZCI6IjY1NTM4OTVmNDI4NDIzZjliM2IwNzM0ZiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTk5NzM1NzMsImV4cCI6MTcwMDIzMjc3M30.JC3xvsF4-n0UuP4zRhhTpr9mcrXYUsAONhIGYPbVGBs
+
 // Create
 async function CreateUser(req, res) {
   const newUser = new User({

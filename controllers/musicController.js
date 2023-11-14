@@ -1,5 +1,8 @@
 const Music = require("../models/Music");
-const { verifyTokenAndAuthorization } = require("../verifyToken");
+const {
+  verifyTokenAndAuthorization,
+  verifyTokenAndAdmin,
+} = require("../verifyToken");
 
 // Create
 async function CreateNewMusic(req, res) {
@@ -49,8 +52,8 @@ async function DeleteMusic(req, res) {
 async function GetMusic(req, res) {
   verifyTokenAndAdmin(req, res, async () => {
     try {
-      const Music = await Music.findById(req.params.id);
-      res.status(200).json(Music);
+      const music = await Music.findById(req.params.id);
+      res.status(200).json(music);
     } catch (err) {
       res.status(500).json(err);
     }

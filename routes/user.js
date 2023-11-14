@@ -7,6 +7,9 @@ router.put("/:id", controller.UpdateUser);
 //DELETE
 router.delete("/:id", controller.DeleteUser);
 
+// Get single user
+router.get("/:id", controller.GetUser);
+
 //GET ALL USER
 router.get("/", controller.GetAllUsers);
 

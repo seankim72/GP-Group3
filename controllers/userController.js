@@ -43,12 +43,9 @@ async function GetUser(req, res) {
 // Delete User
 async function DeleteUser(req, res) {
   verifyTokenAndAuthorization(req, res, async () => {
-    const query = req.query.new;
     try {
-      const users = query
-        ? await User.find().sort({ _id: -1 }).limit(5)
-        : await User.find();
-      res.status(200).json(users);
+      await User.findByIdAndDelete(req.params.id);
+      res.status(200).json("User has been deleted");
     } catch (err) {
       res.status(500).json(err);
     }
