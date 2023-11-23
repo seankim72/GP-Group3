@@ -62,29 +62,27 @@ async function GetMusic(req, res) {
 
 // Get all
 async function GetAllMusic(req, res) {
-  verifyTokenAndAdmin(req, res, async () => {
-    const qNew = req.query.new;
-    const qCategory = req.query.category;
-    try {
-      let Musics;
+  const qNew = req.query.new;
+  const qCategory = req.query.category;
+  try {
+    let Musics;
 
-      if (qNew) {
-        Musics = await Music.find().sort({ createdAt: -1 }).limit(1);
-      } else if (qCategory) {
-        Musics = await Music.find({
-          categories: {
-            $in: [qCategory],
-          },
-        });
-      } else {
-        Musics = await Music.find();
-      }
-
-      res.status(200).json(Musics);
-    } catch (err) {
-      res.status(500).json(err);
+    if (qNew) {
+      Musics = await Music.find().sort({ createdAt: -1 }).limit(1);
+    } else if (qCategory) {
+      Musics = await Music.find({
+        categories: {
+          $in: [qCategory],
+        },
+      });
+    } else {
+      Musics = await Music.find();
     }
-  });
+
+    res.status(200).json(Musics);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 }
 module.exports = {
   CreateNewMusic,
